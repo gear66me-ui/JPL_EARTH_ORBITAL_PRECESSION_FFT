@@ -4,12 +4,17 @@ from __future__ import annotations
 
 import time
 import requests
+import matplotlib.pyplot as plt
 
 SOURCE_URL = (
     "https://raw.githubusercontent.com/gear66me-ui/"
     "JPL_EARTH_ORBITAL_PRECESSION_FFT/main/"
     "EMBOPSA_V0001D.py"
 )
+
+# Clear any stale failed Matplotlib figures before execution.
+plt.ioff()
+plt.close("all")
 
 response = requests.get(
     SOURCE_URL,
@@ -37,5 +42,11 @@ if r"\mathbf r" in source or r"\mathbf v" in source:
     raise RuntimeError("REJECTED legacy MathText syntax remains after repair")
 
 compiled = compile(source, "EMBOPSA_V0001D.py", "exec")
-exec(compiled, globals(), globals())
+try:
+    exec(compiled, globals(), globals())
+finally:
+    # Prevent IPython from redrawing a stale failed figure after FINAL VERSION.
+    plt.close("all")
+
+print("RUNNER STATUS         : CLEAN EXIT")
 # V0001D
