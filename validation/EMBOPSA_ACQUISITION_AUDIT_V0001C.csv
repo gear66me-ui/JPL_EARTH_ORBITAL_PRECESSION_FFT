@@ -1,0 +1,16 @@
+quantity,value
+original_requested_rows,6000
+original_start_year,-13000
+original_stop_year,16995
+original_design_status,REJECTED_HORIZONS_RANGE
+accessible_requested_rows,3999
+accessible_start_year,-9995
+accessible_stop_year,9995
+returned_rows,3999
+unique_years,3999
+unique_returned_jd,3999
+missing_rows,0
+duplicate_rows,0
+maximum_epoch_error_days,0.0
+maximum_unit_normal_error,2.220446049250313e-16
+acquisition_status,ACCEPTED
