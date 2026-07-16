@@ -1,0 +1,10 @@
+quantity,value
+version,V0001E
+source_frequency_rows,20
+source_coefficient_rows,20
+source_reconstruction_rows,3999
+source_holdout_rows,800
+ai_generated_images,PROHIBITED
+rendering_engine,PYTHON_MATPLOTLIB_ONLY
+publication_figures,6
+publication_csv_files,2
