@@ -110,8 +110,14 @@ def main():
           "Harmonic rank", "Combined amplitude (arcsec)")
     save(fig, PNG[1])
 
-    cr = (coef.cosine_real_rad + 1j * coef.cosine_imag_rad) * 206264.80624709636
-    sr = (coef.sine_real_rad + 1j * coef.sine_imag_rad) * 206264.80624709636
+    cr = (
+        coef["cosine_real_rad"].to_numpy(dtype=float)
+        + 1j * coef["cosine_imag_rad"].to_numpy(dtype=float)
+    ) * 206264.80624709636
+    sr = (
+        coef["sine_real_rad"].to_numpy(dtype=float)
+        + 1j * coef["sine_imag_rad"].to_numpy(dtype=float)
+    ) * 206264.80624709636
     fig, ax = plt.subplots(figsize=(8.5, 8.5))
     ax.scatter(cr.real, cr.imag, s=72, color=C["cyan"], edgecolor=C["text"], label="Cosine")
     ax.scatter(sr.real, sr.imag, s=72, color=C["magenta"], edgecolor=C["text"], marker="s", label="Sine")
@@ -121,7 +127,8 @@ def main():
     style(ax, "Complex Harmonic Coefficients",
           "Real component (arcsec)", "Imaginary component (arcsec)")
     leg = ax.legend(facecolor=C["bg"], edgecolor=C["grid"])
-    for t in leg.get_texts(): t.set_color(C["text"])
+    for t in leg.get_texts():
+        t.set_color(C["text"])
     save(fig, PNG[2])
 
     years = rec.astronomical_year.to_numpy()
@@ -134,7 +141,8 @@ def main():
     style(ax, "Harmonic Reconstruction Residuals",
           "Astronomical year", "Residual (arcsec)")
     leg = ax.legend(facecolor=C["bg"], edgecolor=C["grid"])
-    for t in leg.get_texts(): t.set_color(C["text"])
+    for t in leg.get_texts():
+        t.set_color(C["text"])
     save(fig, PNG[3])
 
     fig, ax = plt.subplots(figsize=(12.5, 6.5))
@@ -148,7 +156,8 @@ def main():
     style(ax, "JPL Versus 20-Harmonic Model Error",
           "Astronomical year", "Angular error (arcsec)")
     leg = ax.legend(facecolor=C["bg"], edgecolor=C["grid"])
-    for t in leg.get_texts(): t.set_color(C["text"])
+    for t in leg.get_texts():
+        t.set_color(C["text"])
     save(fig, PNG[4])
 
     fig, ax = plt.subplots(figsize=(13, 8))
